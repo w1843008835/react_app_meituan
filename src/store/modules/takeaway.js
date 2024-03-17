@@ -30,11 +30,32 @@ const foodsStore = createSlice({
                 state.cartList.push(action.payload)
             }
 
+        },
+        //count增
+        increCount(state,action){
+            const item = state.cartList.find(item => item.id === action.payload.id)
+            item.count++
+        },
+
+        //count减
+        decreCount(state,action){
+            const item = state.cartList.find(item => item.id === action.payload.id)
+            if(item.count === 0){
+                return
+            }
+            item.count--
+        },
+        //清除购物车
+        clearCart(state){
+            state.cartList = []
+
         }
+
+
     },
 });
 
-const {setFoodsList,changeActiveIndex,addCart} = foodsStore.actions;
+const {setFoodsList,changeActiveIndex,addCart,increCount,decreCount,clearCart} = foodsStore.actions;
 const fetchFoodsList = () =>{
     return async (dispatch) =>{
         const res = await axios.get("http://localhost:3004/takeaway");
@@ -42,7 +63,7 @@ const fetchFoodsList = () =>{
     };
 };
 
-export {fetchFoodsList,changeActiveIndex,addCart}
+export {fetchFoodsList,changeActiveIndex,addCart,increCount,decreCount,clearCart}
 
 const reducer = foodsStore.reducer;
 export default reducer;
