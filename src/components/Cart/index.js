@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux'
 
 const Cart = () => {
   const {cartList} = useSelector(state => state.foods)
-  const totalPrice = cartList.reduce((a,c) => a + c.price * c.count, 0)
+  //const totalPrice = cartList.reduce((a,c) => a + c.price * c.count, 0)
+  const totalPrice = cartList.reduce((a,c) => a + c.price,0)
   const cart = []
   return (
     <div className="cartContainer">
