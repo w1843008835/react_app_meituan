@@ -1,5 +1,5 @@
 import classNames from 'classnames'
-import { UseDispatch,useDispatch,useSelector } from 'react-redux'
+import { useDispatch,useSelector } from 'react-redux'
 import { changeActiveIndex } from '../../store/modules/takeaway'
 import './index.scss'
 
